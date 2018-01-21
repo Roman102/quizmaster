@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Quiz Master</string>
+    <string name="download_quiz">Download Quiz</string>
+    <string name="caption_quiz_data_url">Quiz - Data URL</string>
+    <string name="sample_quiz_data_url">http://www.example.com/data.txt</string>
 </resources>
