@@ -16,6 +16,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
+
 public class MainActivity extends AppCompatActivity {
 
     private RequestQueue requestQueue;
@@ -39,6 +43,34 @@ public class MainActivity extends AppCompatActivity {
         downloadQuizButton = findViewById(R.id.download_quiz_button);
     }
 
+    private void buildQuizUI(String response) {
+        response = response.trim();
+
+        BufferedReader responseReader = new BufferedReader(new StringReader(response));
+
+        String line;
+
+        try {
+            while ((line = responseReader.readLine()) != null) {
+                line = line.trim();
+
+                if(line.isEmpty()) {
+                    Log.v("buildQuizUI", "The line is empty.");
+                } else {
+                    String elementType = line.substring(0,2);
+                    String elementText = line.substring(2);
+
+                    Log.v("buildQuizUI - eType", elementType);
+                    Log.v("buildQuizUI - eText", elementText);
+                }
+            }
+        } catch (IOException error) {
+            Log.v("MainActivity", error.toString());
+
+            Toast.makeText(context, getString(R.string.error_while_parsing_quiz_data), Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void downloadQuizClick(View view) {
         downloadQuizButton.setEnabled(false);
         editQuizDataUrl.setEnabled(false);
@@ -54,10 +86,10 @@ public class MainActivity extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                Log.v("MainActivity", "Response is: " + response);
-
                                 downloadQuizButton.setEnabled(true);
                                 editQuizDataUrl.setEnabled(true);
+
+                                buildQuizUI(response);
                             }
                         }, new Response.ErrorListener() {
                     @Override

@@ -5,4 +5,5 @@
     <string name="sample_quiz_data_url">http://www.example.com/data.txt</string>
 
     <string name="error_failed_to_download_data">The quiz data could not be downloaded!</string>
+    <string name="error_while_parsing_quiz_data">An error occurred while parsing the quiz data!</string>
 </resources>
