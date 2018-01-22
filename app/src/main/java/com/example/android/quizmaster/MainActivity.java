@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Context context;
 
     private EditText editQuizDataUrl;
+    private Button downloadQuizButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +36,13 @@ public class MainActivity extends AppCompatActivity {
         context = getApplicationContext();
 
         editQuizDataUrl = findViewById(R.id.quiz_data_url);
+        downloadQuizButton = findViewById(R.id.download_quiz_button);
     }
 
     public void downloadQuizClick(View view) {
+        downloadQuizButton.setEnabled(false);
+        editQuizDataUrl.setEnabled(false);
+
         /*
          *  (1) Instantiate the RequestQueue.
          *
@@ -49,11 +55,17 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 Log.v("MainActivity", "Response is: " + response);
+
+                                downloadQuizButton.setEnabled(true);
+                                editQuizDataUrl.setEnabled(true);
                             }
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.v("MainActivity", error.toString());
+
+                        downloadQuizButton.setEnabled(true);
+                        editQuizDataUrl.setEnabled(true);
 
                         Toast.makeText(context, getString(R.string.error_failed_to_download_data), Toast.LENGTH_SHORT).show();
                     }
