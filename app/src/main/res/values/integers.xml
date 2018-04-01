@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="SAMPLE_CONFIGURATION_1_TEXT_POS_START">412</integer>
+    <integer name="SAMPLE_CONFIGURATION_1_TEXT_POS_END">434</integer>
+
+    <integer name="SAMPLE_CONFIGURATION_2_TEXT_POS_START">437</integer>
+    <integer name="SAMPLE_CONFIGURATION_2_TEXT_POS_END">459</integer>
+
+    <integer name="UDACITY_DISCUSSION_TEXT_POS_START">500</integer>
+    <integer name="UDACITY_DISCUSSION_TEXT_POS_END">515</integer>
+
+    <integer name="GITHUB_REPOSITORY_TEXT_POS_START">569</integer>
+    <integer name="GITHUB_REPOSITORY_TEXT_POS_END">573</integer>
+
+    <integer name="GITHUB_REPOSITORY_GISTS_TEXT_POS_START">590</integer>
+    <integer name="GITHUB_REPOSITORY_GISTS_TEXT_POS_END">618</integer>
+</resources>

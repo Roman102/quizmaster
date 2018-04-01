@@ -25,7 +25,7 @@
             <Button
                 android:id="@+id/download_quiz_button"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="downloadQuizClick"
                 android:text="@string/download_quiz" />
@@ -33,11 +33,19 @@
             <Button
                 android:id="@+id/submit_answers_button"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:enabled="false"
                 android:onClick="submitAnswersClick"
                 android:text="@string/submit_answers" />
+
+            <Button
+                android:id="@+id/help_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="helpButtonClick"
+                android:text="@string/help" />
         </LinearLayout>
 
         <LinearLayout

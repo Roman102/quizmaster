@@ -2,9 +2,15 @@ package com.example.android.quizmaster;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -378,6 +384,91 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }).create().show();
         }
+    }
+
+    public void helpButtonClick(View view) {
+        SpannableString helpText = new SpannableString(getString(R.string.explanation,
+                getString(R.string.caption_quiz_data_url), getString(R.string.download_quiz), getString(R.string.submit_answers)));
+
+        helpText.setSpan(new ClickableSpan() {
+                             @Override
+                             public void onClick(View view) {
+                                 editQuizDataUrl.setText(getString(R.string.sample_configuration_1));
+                             }
+                         },
+                getResources().getInteger(R.integer.SAMPLE_CONFIGURATION_1_TEXT_POS_START),
+                getResources().getInteger(R.integer.SAMPLE_CONFIGURATION_1_TEXT_POS_END),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        helpText.setSpan(new ClickableSpan() {
+                             @Override
+                             public void onClick(View view) {
+                                 editQuizDataUrl.setText(getString(R.string.sample_configuration_2));
+                             }
+                         },
+                getResources().getInteger(R.integer.SAMPLE_CONFIGURATION_2_TEXT_POS_START),
+                getResources().getInteger(R.integer.SAMPLE_CONFIGURATION_2_TEXT_POS_END),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        helpText.setSpan(new ClickableSpan() {
+                             @Override
+                             public void onClick(View view) {
+                                 Intent orderIntent = new Intent(Intent.ACTION_VIEW);
+
+                                 orderIntent.setData(Uri.parse(getString(R.string.udacity_discussion)));
+
+                                 if (orderIntent.resolveActivity(getPackageManager()) != null) {
+                                     startActivity(orderIntent);
+                                 }
+                             }
+                         },
+                getResources().getInteger(R.integer.UDACITY_DISCUSSION_TEXT_POS_START),
+                getResources().getInteger(R.integer.UDACITY_DISCUSSION_TEXT_POS_END),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        helpText.setSpan(new ClickableSpan() {
+                             @Override
+                             public void onClick(View view) {
+                                 Intent orderIntent = new Intent(Intent.ACTION_VIEW);
+
+                                 orderIntent.setData(Uri.parse(getString(R.string.github_repository)));
+
+                                 if (orderIntent.resolveActivity(getPackageManager()) != null) {
+                                     startActivity(orderIntent);
+                                 }
+                             }
+                         },
+                getResources().getInteger(R.integer.GITHUB_REPOSITORY_TEXT_POS_START),
+                getResources().getInteger(R.integer.GITHUB_REPOSITORY_TEXT_POS_END),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        helpText.setSpan(new ClickableSpan() {
+                             @Override
+                             public void onClick(View view) {
+                                 Intent orderIntent = new Intent(Intent.ACTION_VIEW);
+
+                                 orderIntent.setData(Uri.parse(getString(R.string.github_repository_gists)));
+
+                                 if (orderIntent.resolveActivity(getPackageManager()) != null) {
+                                     startActivity(orderIntent);
+                                 }
+                             }
+                         },
+                getResources().getInteger(R.integer.GITHUB_REPOSITORY_GISTS_TEXT_POS_START),
+                getResources().getInteger(R.integer.GITHUB_REPOSITORY_GISTS_TEXT_POS_END),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        AlertDialog helpDialogue = (new AlertDialog.Builder(this)).setMessage(helpText)
+                .setTitle(R.string.help)
+                .setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                }).create();
+
+        helpDialogue.show();
+
+        ((TextView) helpDialogue.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private class Answer {

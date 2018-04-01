@@ -5,6 +5,14 @@
     <string name="sample_quiz_data_url">http://www.example.com/data.txt</string>
     <string name="submit_answers">Submit answers</string>
 
+    <string name="help">Help</string>
+    <string name="explanation">This quiz app allows one to download a quiz in a configuration file, which describes the UI structure for the quiz as well as the questions and correct answers. Click on one of the following two sample links in order to paste them into the \"%1$s\"-input field. Then close this dialogue and tap on the \"%2$s\"-button, answer all the questions and submit them via the \"%3$s\"-button:\n\n◆ Sample configuration 1\n◆ Sample configuration 2\n\nA detailed explanation can be found in this discussion. The GitHub repository for this project can be found here. And here\'s the link to the two sample files.</string>
+    <string name="sample_configuration_1">https://gist.githubusercontent.com/Roman102/a8d1a44771dc9be4de412547913ba2b4/raw/e5112d4737cb172386aae5a2398925a2c524825c/sample_quiz_data.txt</string>
+    <string name="sample_configuration_2">https://gist.githubusercontent.com/Roman102/4068db0620600ec868872a99fc14083b/raw/f8046427c7935917ddb416b228d6494ea2f73bb0/sample_quiz_data_2.txt</string>
+    <string name="udacity_discussion">https://discussions.udacity.com/t/share-your-project-mentor-feedback/554799/523?u=domnich4</string>
+    <string name="github_repository">https://github.com/Roman102/quizmaster</string>
+    <string name="github_repository_gists">https://gist.github.com/Roman102</string>
+
     <string name="results">Results</string>
     <string name="okay">Okay</string>
 
